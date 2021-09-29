@@ -1,5 +1,6 @@
 package com.joe.first.springboot.domain.posts;
 
+import com.joe.first.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor // 기본 생성자 자동 추가
 @Entity // 테이블과 링크될 클래스임을 나타낸다. / 기본값으로 클래스의 카멜케이스 이름을 언더스코어 네이밍(_)으로 테이블 이름을 매칭
-public class Posts {
+public class Posts extends BaseTimeEntity {
     @Id // 해당 테이블의 pk 필드를 나타냄
     @GeneratedValue(strategy = GenerationType.IDENTITY) // pk의 생성규칙을 나타낸다. 스프링 부트 2.0버전에서는 이 옵션을 추가해야만 auto_increment가 된다.
     private Long id;
