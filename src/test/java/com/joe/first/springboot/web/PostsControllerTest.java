@@ -59,7 +59,7 @@ public class PostsControllerTest {
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseEntity.getBody()).isGreaterThan(0L);
         List<Posts> all = postsRepository.findAll();
-        assertThat(all.get(0).getTilte()).isEqualTo(title);
+        assertThat(all.get(0).getTitle()).isEqualTo(title);
         assertThat(all.get(0).getContent()).isEqualTo(content);
 
     }
@@ -69,7 +69,7 @@ public class PostsControllerTest {
         // given
         // 임의의 게시글 등록
         Posts savedPosts = postsRepository.save(Posts.builder()
-                .tilte("title")
+                .title("title")
                 .content("content")
                 .author("author")
                 .build());
@@ -97,7 +97,7 @@ public class PostsControllerTest {
         assertThat(responseEntity.getBody()).isGreaterThan(0L); // 게시글 등록 상태 확인
 
         List<Posts> all = postsRepository.findAll(); // 등록된 게시글 가져오기
-        assertThat(all.get(0).getTilte()).isEqualTo(expectedTitle); // 수정 변수와 실제로 db에서 수정 명령이 잘 되었는지 확인
+        assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle); // 수정 변수와 실제로 db에서 수정 명령이 잘 되었는지 확인
         assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
     }
 

@@ -32,7 +32,7 @@ public class PostsRepositoryTest {
         String content = "테스트 본문";
 
         postsRepository.save(Posts.builder() // 테이블 posts에 insert/update 쿼리를 실행 , id 값이 있다면 update , 없으면 insert 쿼리가 실행
-                                .tilte(title)
+                                .title(title)
                                 .content(content)
                                 .author("joe@gmail.com")
                                 .build());
@@ -42,7 +42,7 @@ public class PostsRepositoryTest {
 
         // then
         Posts posts = postsList.get(0);
-        assertThat(posts.getTilte()).isEqualTo(title);
+        assertThat(posts.getTitle()).isEqualTo(title);
         assertThat(posts.getContent()).isEqualTo(content);
 
 
