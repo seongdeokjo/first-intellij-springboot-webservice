@@ -32,4 +32,10 @@ public class Posts {
         this.author = author;
     }
 
+    public void update(String tilte,String content){
+        this.tilte = tilte;
+        this.content = content;
+    }
+
+
 }
