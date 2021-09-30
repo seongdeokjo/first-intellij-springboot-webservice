@@ -4,6 +4,7 @@ import com.joe.first.springboot.domain.posts.Posts;
 import com.joe.first.springboot.domain.posts.PostsRepository;
 import com.joe.first.springboot.web.dto.PostsResponseDto;
 import com.joe.first.springboot.web.dto.PostsSaveRequestDto;
+import com.joe.first.springboot.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +20,7 @@ public class PostsService {
     }
 
     @Transactional
-    public Long update(Long id, PostsSaveRequestDto requestDto) {
+    public Long update(Long id, PostsUpdateRequestDto requestDto) {
         Posts posts = postsRepository.findById(id).orElseThrow(
                             () -> new IllegalArgumentException("해당 게시글이 없습니다. id="+ id));
         // 데이터 베이스에 쿼리를 날리는 부분이 없다, -> JPA의 영속성 컨텍스트 때문이다.
