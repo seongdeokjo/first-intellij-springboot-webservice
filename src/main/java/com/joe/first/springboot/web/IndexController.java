@@ -5,6 +5,7 @@ import com.joe.first.springboot.config.auth.dto.SessionUser;
 import com.joe.first.springboot.service.posts.PostsService;
 import com.joe.first.springboot.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpSession;
 
+@Log
 @Controller
 @RequiredArgsConstructor
 public class IndexController {
@@ -25,8 +27,12 @@ public class IndexController {
         model.addAttribute("posts",postsService.findAllDesc());
 
         if(user != null){
-            model.addAttribute("userName",user.getName());
+            log.info("user : "+user);
+            log.info("이름 : "+user.getName());
+            model.addAttribute("user",user.getName());
+
         }
+
         return "index";
     }
 

@@ -4,14 +4,14 @@
     <div class="row">
         <div class="col-md-6">
             <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
-            {{#userName}}
-                Logged in as: <span id="user">{{userName}}</span>
+            {{#user}}
+                Logged in as: {{user}}
                 <a href="/logout" class="btn btn-info active" role="button">Logout</a>
-            {{/userName}}
-            {{^userName}} {{!-- ^: 해당 값이 존재하지 않는 경우 사용 --}}
+            {{/user}}
+            {{^user}} {{!-- ^: 해당 값이 존재하지 않는 경우 사용 --}}
                 <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
                 <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
-            {{/userName}}
+            {{/user}}
         </div>
     </div>
     <br>
