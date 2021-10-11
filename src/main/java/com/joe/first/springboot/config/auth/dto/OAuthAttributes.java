@@ -4,12 +4,10 @@ import com.joe.first.springboot.domain.user.Role;
 import com.joe.first.springboot.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.extern.java.Log;
 
 import java.util.Map;
 
 @Getter
-@Log
 public class OAuthAttributes {
     private Map<String,Object> attributes;
     private String nameAttributeKey;
@@ -27,7 +25,7 @@ public class OAuthAttributes {
     }
 
     public static OAuthAttributes of(String registrationId, String userNameAttributeName,Map<String,Object> attributes){
-        log.info(registrationId+" : "+userNameAttributeName+" : "+attributes);
+
         if("naver".equals(registrationId)){
             return ofNaver("id",attributes);
         }

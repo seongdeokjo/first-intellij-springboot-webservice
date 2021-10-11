@@ -1,15 +1,15 @@
 package com.joe.first.springboot.web;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class IndexControllerTest {
     @Autowired
@@ -21,7 +21,7 @@ public class IndexControllerTest {
         String body = this.testRestTemplate.getForObject("/",String.class);
 
         //then
-        assertThat(body).contains("스프링 부트로 시작하는 웹 서비스");
+        assertThat(body).contains("스프링부트로 시작하는 웹 서비스");
 
 
 
