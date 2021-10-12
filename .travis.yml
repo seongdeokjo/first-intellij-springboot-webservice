@@ -21,14 +21,14 @@ cache:
 script: "./gradlew clean build"
 
 before_deploy: # deploy 명령어가 실행되기전에 수행 codeDeploy는 jar 파일 인식 불가, 압축해야한다.
-  - zip -r first-springboot2-webservice first-springboot2-webservice
+  - zip -r first-springboot2-webservice ./*
   - mkdir -p deploy
   - mv first-springboot2-webservice.zip deploy/first-springboot2-webservice.zip
 
 deploy:
   - provider: s3
-    access_key_id: $AWS_ACCESS_KEY # travis repo settings에 설정된 값
-    secret_access_key: $AWS_SECRET_KEY # travis repo settings에 설정된 값
+    access_key_id: $AWS_ACCESS_KEY   # travis repo settings에 설정된 값
+    secret_access_key: $AWS_SECRET_KEY   # travis repo settings에 설정된 값
     bucket: first-springboot-build
     region: ap-northeast-2
     skip_cleanup: true
