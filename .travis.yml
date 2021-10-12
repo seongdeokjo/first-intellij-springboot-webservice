@@ -28,7 +28,7 @@ before_deploy: # deploy 명령어가 실행되기전에 수행 codeDeploy는 jar
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY   # travis repo settings에 설정된 값
-    secret_access_key: $AWS_SECRET_KEY   # travis repo settings에 설정된 값
+    secret_access_key: $AWS_SECRET_KEY   # travis repo settings에 설정된 값 실제로는 보이지 않는다
     bucket: first-springboot-build
     region: ap-northeast-2
     skip_cleanup: true
