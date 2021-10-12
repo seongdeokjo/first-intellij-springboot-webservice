@@ -20,6 +20,22 @@ cache:
 # master 브랜치에 푸시되었을때 수행하는 명령어, 프로젝트 내부에 둔 gradlew을 통해 clean&build 하도록 수행
 script: "./gradlew clean build"
 
+before_deploy: # deploy 명령어가 실행되기전에 수행 codeDeploy는 jar 파일 인식 불가, 압축해야한다.
+  - zip -r first-springboot2-webservice first-springboot2-webservice
+  - mkdir -p deploy
+  - mv first-springboot2-webservice.zip deploy/first-springboot2-webservice.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY # travis repo settings에 설정된 값
+    secret_access_key: $AWS_SECRET_KEY # travis repo settings에 설정된 값
+    bucket: first-springboot-build
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private # zip 파일 접근을 private로
+    local_dir: deploy # before_deploy에서 생성한 디렉토리 , 해당 위치의 파일들만 s3로 전송
+    wait-until-deployed: true
+
 # CI 실행 완료시 메일로 알람
 notifications:
   email:
