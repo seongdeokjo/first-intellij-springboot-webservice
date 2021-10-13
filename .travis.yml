@@ -44,7 +44,7 @@ deploy:
     secret_access_key: $AWS_SECRET_KEY   # travis repo settings에 설정된 값 실제로는 보이지 않는다
     bucket: first-springboot-build
     region: ap-northeast-2
-    skip_cleanup: true
+    cleanup: true
     acl: private # zip 파일 접근을 private로
     local_dir: deploy # before_deploy에서 생성한 디렉토리 , 해당 위치의 파일들만 s3로 전송
     wait-until-deployed: true
@@ -58,7 +58,7 @@ deploy:
     application: first-springboot2-webservice # 웹 콘솔에서 등록한 codedeploy 애플리케이션
     deployment_group: first-springboot2-webservice-group # 웹 콘솔에서 등록한 codedeploy 배포 그룹
     region: ap-northeast-2
-    wait-until-deployed: true
+    wait_until_deployed: true
 
 
 # CI 실행 완료시 메일로 알람
