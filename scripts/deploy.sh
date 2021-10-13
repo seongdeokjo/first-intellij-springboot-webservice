@@ -35,7 +35,6 @@ chmod +x $JAR_NAME
 
 echo "> $JAR_NAME 실행"
 
-nohup java -jar \
-  -Dspring.config.location=classpath:/application.properties,classpath:/application-real.properties,/home/ec2-user/app/application-oauth.properties,/home/ec2-user/app/application-real-db.properties \
-  -Dspring.profiles.active=real \
-  $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &  # nohup 실행시 codedeploy는 무한대기, 이 이슈를 해결하기 위해 nohup.out 파일이 생기지 않고, codedeploy 로그에 표준 입출력이 출력된다.
+nohup java -jar -Dspring.config.location=classpath:/application.properties,classpath:/application-real.properties,/home/ec2-user/app/application-oauth.properties,/home/ec2-user/app/application-real-db.properties \
+-Dspring.profiles.active=real \
+$JAR_NAME > $REPOSITORY/nohup.out 2>&1 &  # nohup 실행시 codedeploy는 무한대기, 이 이슈를 해결하기 위해 nohup.out 파일이 생기지 않고, codedeploy 로그에 표준 입출력이 출력된다.
