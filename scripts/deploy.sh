@@ -9,7 +9,7 @@ cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
 echo "> 현재 구동 중인 애플리케이션 pid 확인"
 
-CURRENT_PID=$(pgrep -f1 first-springboot2-webservice | grep java | awk '{print $1}') # 현재 수행 중인 스프링 부트 애플리케이션의 프로세스 id를 찾는다
+CURRENT_PID=$(pgrep -fl first-springboot2-webservice | grep java | awk '{print $1}') # 현재 수행 중인 스프링 부트 애플리케이션의 프로세스 id를 찾는다
 
 echo "현재 구동 중인 애플리케이션 pid: $CURRENT_PID"
 
