@@ -20,10 +20,23 @@ cache:
 # master 브랜치에 푸시되었을때 수행하는 명령어, 프로젝트 내부에 둔 gradlew을 통해 clean&build 하도록 수행
 script: "./gradlew clean build"
 
-before_deploy: # deploy 명령어가 실행되기전에 수행 codeDeploy는 jar 파일 인식 불가, 압축해야한다.
-  - zip -r first-springboot2-webservice ./*
-  - mkdir -p deploy
-  - mv first-springboot2-webservice.zip deploy/first-springboot2-webservice.zip
+# deploy 명령어가 실행되기전에 수행 codeDeploy는 jar 파일 인식 불가, 압축해야한다.
+before_deploy:
+  - mkdir -p before-deploy # zip에 포함시킬 파일들을 담을 디렉토리 생성
+                           # travis ci 는 s3로 특정 파일만 업로드가 안된다. 디렉토리 단위로만 업로드 할 수 있기 때문에 before-deploy 디렉토리는 항상 생성
+  - cp scripts/*.sh before-deploy/ # before-deploy에는 zip 파일에 포함시킬 파일들을 저장한다.
+  - cp appspec.yml before-deploy/
+  - cp build/libs/*.jar before-deploy/
+  - cd before-deploy && zip -r before-deploy * # before-deploy로 이동 후 전체 압축
+  - cd ../ && mkdir -p deploy # 상위 디렉토리로 이동 후 deploy 디렉토리 생성
+  - mv before-deploy/before-deploy.zip deploy/first-springboot2-webservice.zip # deploy로 zip 파일 이동
+
+#  - zip -r first-springboot2-webservice ./*
+#  - mkdir -p deploy
+#  - mv first-springboot2-webservice.zip deploy/first-springboot2-webservice.zip
+
+
+
 
 deploy:
   - provider: s3
