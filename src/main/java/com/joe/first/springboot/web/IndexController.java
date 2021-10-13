@@ -27,7 +27,7 @@ public class IndexController {
 
         if(user != null){
 
-            model.addAttribute("user",user.getName());
+            model.addAttribute("loginUser",user.getName());
 
         }
 
