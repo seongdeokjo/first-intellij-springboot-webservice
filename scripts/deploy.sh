@@ -3,6 +3,8 @@
 REPOSITORY=/home/ec2-user/app/step2
 PROJECT_NAME=first-springboot2-webservice
 
+chmod +x ./deploy.sh
+
 echo "> Build 파일 복사"
 
 cp $REPOSITORY/zip/*.jar $REPOSITORY/
