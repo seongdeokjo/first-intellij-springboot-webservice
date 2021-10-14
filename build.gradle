@@ -5,7 +5,8 @@ plugins { // (1)
 }
 
 group 'com.joe.first-intellij'
-version '1.0.6-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
+version '1.0.6-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss") // build.gradle은 groovy 기반의 빌드 툴 
+                                                            // new Date()로 빌드 할 때마다 그 시간이 버전에 추가되도록 구성
 sourceCompatibility = 1.8
 
 repositories {
