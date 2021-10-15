@@ -26,7 +26,7 @@ hooks: # codedeploy 배포 단계에서 실행할 명령어를 지정한다. app
     - location: start.sh # 엔진엑스와 연결되어 있지 않은 port로 새 버전의 스프링 부트를 시작. -> step3
       timeout: 60 # 스크립트 실행 60초 이상 수행되면 실패가 됨(무한정 기다릴 수 없으니 시간 제한을 둬야만 한다)
       runas: ec2-user
-  VaildateService:
+  ValidateService:
     - location: health.sh # 새 스프링 부트가 정상적으로 실행됬는지 확인.
       timeout: 60
       runas: ec2-user
