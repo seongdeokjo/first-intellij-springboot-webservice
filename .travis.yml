@@ -58,7 +58,7 @@ deploy:
     application: first-springboot2-webservice # 웹 콘솔에서 등록한 codedeploy 애플리케이션
     deployment_group: first-springboot2-webservice-group # 웹 콘솔에서 등록한 codedeploy 배포 그룹
     region: ap-northeast-2
-    wait-until-deployed: true
+    wait_until_deployed: true
 
 
 # CI 실행 완료시 메일로 알람
