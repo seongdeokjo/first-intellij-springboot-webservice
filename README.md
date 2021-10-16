@@ -15,4 +15,4 @@
 ## 1. 개발 환경
 * intellij Ultimate(학생 계정 1년 무료)
 * Java 8
-* Gradle 4.8 ~ Gradle 4.10.2
+* Gradle 7.1
